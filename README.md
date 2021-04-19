@@ -63,12 +63,92 @@ Output:
 ```
 ![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_genap_ganjil_v2.png)
 
-## SOOAL
+## MALUR TERHUBUNG
 ### Verdict
-VER
+AC saat Praktikum
 
 ### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_bukti_ax.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_malur_terhubung.png)
+
+### Penjelasan Soal
+Diberikan input angka dalam tree. Untuk setiap query l dan r, outputkan hasil penjumlahan subtree yang menghubungkan l dan r (l<r). Jika l/r tidak dalam tree, outputkan `-1`.
+### Penjelasan Solusi
+#### Fungsi Main:
+```
+int main() {
+	BST tree;
+	tree.init();
+		
+	int N,Q,A,L,R;
+	cin >> N >> Q;
+	for (int i=0; i<N; i++) {
+		cin >> A;
+		tree.insert(A);
+	}
+	for (int i=0; i<Q; i++) {
+		cin >> L >> R;
+		if (L>R) {
+			int temp = R;
+			R = L;
+			L = temp;
+		}
+		if (tree.find(L) && tree.find(R) && !tree.isEmpty()) {
+			cout << tree.sumConnectingSubtree(L, R) << endl;
+		} else {
+			cout << -1 << endl;
+		}
+	}
+	
+	return 0;
+}
+```
+Pertama, program mengambil input `N`, banyak angka dalam tree, dan `Q`, banyak query. Kemudian program mengambil `N` angka dan memasukkan ke tree.
+Kemudian untuk setiap query:
+Mengambil l dan r
+Menukar l dan r jika l>r
+Jika l dan r ada dalam tree:
+  Menjalankan fungsi sumConnectingSubtree().
+  jika tidak keluarkan -1.
+ 
+#### Fungsi sumConnectingSubtree()
+```
+int sumConnectingSubtree(int l, int r) {
+		int sum = 0;
+		scs(root, l, r, &sum);
+		return sum;
+	}
+
+void scs(node* t, int l, int r, int* sum) {
+		if (t!=NULL) {
+			if (t->key>r) 
+				scs(t->left, l, r, sum);
+			else if (t->key<l) 
+				scs(t->right, l, r, sum);
+			else {
+				scs_recur(t, sum);
+			}
+		}
+	}
+  
+void scs_recur(node *t, int* sum) {
+		if (t != NULL) {
+			*sum += t->key;
+			scs_recur(t->left, sum);
+			scs_recur(t->right, sum);
+		}
+	}
+```
+Fungsi ini mencari subtree yang menghubungkan l dan r (subtree pertama yang bernilai inklusif antara l dan r, subtree ini pasti root teratas yang dilalui saat menghubungkan l dan r, karena ) dengan fungsi `scs`. Mulai dari root, jika value > r, ke kiri, jika value < l, ke kanan. Setelah ketemu subtree yang dicari, maka menghitung jumlah setiap anggota dalam subtree dengan fungsi `scs_recur` yang menggunakan traversing preorder.
+
+### Visualisasi Solusi
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_visual1.png)
+
+## Nadut Gabut
+### Verdict
+AC saat Praktikum
+
+### Bukti
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_nadut_gabut.png)
 
 ### Penjelasan Soal
 
@@ -77,26 +157,12 @@ VER
 ### Visualisasi Solusi
 ![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_visual1.png)
 
-## SOOAL
+## Penomoran Garasi Saha
 ### Verdict
-VER
+AC saat Praktikum
 
 ### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_bukti_ax.png)
-
-### Penjelasan Soal
-
-### Penjelasan Solusi
-
-### Visualisasi Solusi
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_visual1.png)
-
-## SOOAL
-### Verdict
-VER
-
-### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_bukti_ax.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_penomoran_garasi_saha.png)
 
 ### Penjelasan Soal
 
