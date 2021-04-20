@@ -1,7 +1,5 @@
 # struktur-data-h-praktikum-2-2021
 
-# struktur-data-h-praktikum-1-2021
-
 ## Banyu
 ### Verdict
 Wrong Answer
@@ -29,6 +27,38 @@ Diminta memasukkan input ke dalam tree dan mengeluarkan output sesuai petunjuk: 
 
 ### Penjelasan Solusi
 Solusinya adalah traversal inorder dari "RoniRed". Traversal inorder adalah pengaksesan data dalam tree dari terkecil ke terbesar. Program mengakses left child kemudian mencetak kemudian mengakses right child.
+```
+int main() {
+	BST tree;
+	tree.init();
+	
+	int N;
+	int num;
+	
+	cin >> N;
+	for (int i=0; i<N; i++) {
+		cin >> num;
+		tree.insert(num);
+	}
+		
+	tree.inorder();
+	putchar('\n');
+	
+	return 0;
+}
+
+	void inorder() {
+		inorderT(root);	
+	}
+
+	void inorderT(node *temp) {
+		if (temp != NULL) {
+			inorderT(temp->left);
+		    cout << temp->key << " ";
+			inorderT(temp->right);
+		}
+	}
+```
 
 ### Visualisasi Solusi
 ![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/Inorder-traversal.gif)
@@ -45,6 +75,35 @@ Diminta membuat binary search tree yang isinya angka genap semua. Jika ada input
 Program menggunakan stack untuk menyimpan _trace_ angka genap terakhir.
 Pertama program mengambil jumlah testcase.
 Program mengambil input. Jika genap, masukkan angka ke tree dan stack. Jika ganjil, keluarkan angka (yang ada pada atas stack) dari tree, kemudian pop stack. Setelah selesai, keluarkan output secara inorder. 
+```
+int main() {
+	BST tree;
+	tree.init();
+	
+	Stack stack;
+	stack.init();
+	
+	int N, num;
+	
+	cin >> N;
+	for (int i=0; i<N; i++) {
+		cin >> num;
+		if (num & 1) {
+			tree.remove(stack.top());
+			stack.pop();
+		} else {
+			stack.push(num);
+			tree.insert(num);
+		}
+	}
+	
+	if (tree.isEmpty()) cout << "Tree Kosong!";
+	else tree.inorder();
+	putchar('\n');
+	
+	return 0;
+}
+```
 ### Visualisasi Solusi
 Contoh Input:
 ```
@@ -141,7 +200,7 @@ void scs_recur(node *t, int* sum) {
 Fungsi ini mencari subtree yang menghubungkan l dan r (subtree pertama yang bernilai inklusif antara l dan r, subtree ini pasti root teratas yang dilalui saat menghubungkan l dan r, karena ) dengan fungsi `scs`. Mulai dari root, jika value > r, ke kiri, jika value < l, ke kanan. Setelah ketemu subtree yang dicari, maka menghitung jumlah setiap anggota dalam subtree dengan fungsi `scs_recur` yang menggunakan traversing preorder.
 
 ### Visualisasi Solusi
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_visual1.png)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_malur.png)
 
 ## Nadut Gabut
 ### Verdict
@@ -153,6 +212,28 @@ AC saat Praktikum
 ### Penjelasan Soal
 Diberikan suatu tree, program diminta menentukan apakah ada penjumlahan tiga node terhubung yang menghasilkan jumlah tertentu `sum` dalam tree.
 ### Penjelasan Solusi
+Main program:
+```
+int main() {
+	BST tree;
+	tree.init();
+	
+	int t, sum, n;
+	cin >> t;
+	for (int i=0; i<t; i++) {
+		cin >> n;
+		tree.insert(n);
+	}
+	cin >> sum;
+	
+	bool result = tree.findJumlahTiga(sum);
+	
+	if (result) cout << "Penjumlahan angka di tree yang menghasilkan " << sum << " ditemukan" << endl;
+	else cout << "Tidak ditemukan penjumlahan angka di tree yang menghasilkan " << sum << endl;
+
+	return 0;
+}
+```
 Program menggunakan fungsi bool `findJumlahTiga()`. Fungsi ini menjumlahkan tiap kombinasi 3 node terhubung dan mengecek apakah jumlahnya sebesar `sum`.
 ```
 	bool findJumlahTiga(int value) {
@@ -200,8 +281,6 @@ Tiap kemungkinan ini dicek dalam fungsi rekursif `findtiga()`:
 		return false;
 	}
 ```
-
-
 ### Visualisasi Solusi
 INPUT:
 ```
@@ -213,7 +292,7 @@ OUTPUT:
 ```
 Penjumlahan angka di tree yang menghasilkan 266 ditemukan
 ```
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_ng.png)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_ng2.png)
 
 ## Penomoran Garasi Saha
 ### Verdict
@@ -223,11 +302,133 @@ AC saat Praktikum
 ![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_penomoran_garasi_saha.png)
 
 ### Penjelasan Soal
+Diberikan sebuah tree. Program diminta mendata node tree pada tingkat terbawah sampai tingkat teratas dengan pola nilai minimal, maksimal, minimal, dst.
 
 ### Penjelasan Solusi
+Berikut fungsi main:
+```
+int main() {
+	BST tree;
+	tree.init();
+		
+	int P, num, h;
+	
+	cin >> P;
+	for (int i=0; i<P; i++) {
+		cin >> num;
+		tree.insert(num);
+	}
+
+	h = tree.height();	
+	int A[h+1];
+	for (int j=1; j<h; j+=2) 
+		A[j] = 0;
+
+	if (h & 1) {
+		tree.penomoranGarasi(&A[0], 1);
+	} else {
+		tree.penomoranGarasi(&A[0], 0);
+	}
+	
+	for (int k=h-1; k>=0; k--) {
+		cout << A[k] << " ";
+	}
+	
+	return 0;
+}
+```
+Program diminta untuk menentukan output dengan pola min-max-min dari tingkat terbawah sampai ke atas, maka dari root ke tingkat bawah ada dua kemungkinan:
+Jika jumlah tingkat dalam tree `h` ganjil, maka dari tingkat atas ke bawah min-max-min. Jika genap maka max-min-max. Jumlah tingkat tree ditentukan melalui fungsi `height()` yang memanggil fungsi rekursi `maxh()`.
+```
+	int height() {
+		return maxh(root);
+	}
+
+	int maxh(node* temp) {
+		if (temp==NULL) return 0;
+		else 
+		{
+			int lefth = maxh(temp->left);
+			int righth = maxh(temp->right);
+			
+			if (lefth > righth) 
+				return lefth+1;
+			else return righth+1;
+		}
+	}
+```
+Berdasarkan jumlah tingkat `h`, program akan menentukan max/min setiap tingkat tree (sesuai pola) dan memasukkannya ke array `A` melalui fungsi `penomoranGarasi()`. 
+
+#### Fungsi penomoranGarasi()
+```
+	void penomoranGarasi(int *arr, int genapmin) {
+		int h=0;
+		if (genapmin) 
+			garasiA(root, h, arr);
+		else garasiB(root, h, arr);
+	}
+```
+Fungsi ini memanggil salah satu dari 2 fungsi utility. `genapmin` disini mengindikasikan pola min-max-min jika `true`, sehingga memanggil fungsi rekursif `garasiA()`.
+```
+	void garasiA(node* t, int h, int* arr) {
+		if (t != NULL) {
+			if (arr[h] == 0) {
+				arr[h] = t->key;
+			} else {
+				if (h & 1) {
+					if (t->key > arr[h])
+						arr[h] = t->key;
+				} else {
+					if (t->key < arr[h])
+						arr[h] = t->key;
+				}
+			}
+			garasiA(t->left, h+1, arr);
+			garasiA(t->right, h+1, arr);
+		}
+	}
+```
+Disini dicek dan diupdate nilai min/max setiap tingkat (`h`, tingkat teratas = 0). jika `h` genap, dicari nilai min, dan jika ganjil sebaliknya, sehingga pola pada array min-max-min. Untuk fungsi `garasiB()` sama persis, hanya jika `h` genap, dicari nilai max dan sebaliknya.
+```
+	void garasiB(node* t, int h, int* arr) {
+		if (t != NULL) {
+			if (arr[h] == 0) {
+				arr[h] = t->key;
+			} else {
+				if (h & 1) {
+					if (t->key < arr[h])
+						arr[h] = t->key;
+				} else {
+					if (t->key > arr[h])
+						arr[h] = t->key;
+				}
+			}
+				garasiB(t->left, h+1, arr);
+			garasiB(t->right, h+1, arr);
+		}
+	}
+```
+Setelah mendapat data sesuai pola dalam array, karena output harus dari tingkat bawah ke atas, program meng-output-kan array dari belakang.
 
 ### Visualisasi Solusi
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_visual1.png)
+INTRO
+```
+7
+500
+250
+750
+125
+375
+625
+875
+```
+OUTPUT
+```
+125 750 500
+```
+Disini jumlah tingkat tree adalah 3(ganjil), maka pola dari atas adalah min-max-min
+
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_pgs.png)
 
 
 
