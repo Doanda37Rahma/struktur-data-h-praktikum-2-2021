@@ -151,11 +151,69 @@ AC saat Praktikum
 ![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_nadut_gabut.png)
 
 ### Penjelasan Soal
-
+Diberikan suatu tree, program diminta menentukan apakah ada penjumlahan tiga node terhubung yang menghasilkan jumlah tertentu `sum` dalam tree.
 ### Penjelasan Solusi
+Program menggunakan fungsi bool `findJumlahTiga()`. Fungsi ini menjumlahkan tiap kombinasi 3 node terhubung dan mengecek apakah jumlahnya sebesar `sum`.
+```
+	bool findJumlahTiga(int value) {
+		bool result = findtiga(root, value);
+		return result;
+	}
+```
+Terdapat 5 kemungkinan hubungan 3 node dalam tree.
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_ng.png)
+Tiap kemungkinan ini dicek dalam fungsi rekursif `findtiga()`:
+```
+	bool findtiga(node *temp, int value) {
+		if (temp != NULL) {
+			int sum;
+			if (temp->left) {
+				if (temp->right) {
+					sum = temp->key + temp->left->key + temp->right->key;
+					if (sum == value) return true;
+				}
+				if (temp->left->left) {
+					sum = temp->key + temp->left->key + temp->left->left->key;
+					if (sum == value) return true;
+				}
+				if (temp->left->right) {
+					sum = temp->key + temp->left->key + temp->left->right->key;
+					if (sum == value) return true;
+				}
+			}
+			if (temp->right) {
+				if (temp->right->right) {
+					sum = temp->key + temp->right->key + temp->right->right->key;
+					if (sum == value) return true;
+				}
+				if (temp->right->left) {
+					sum = temp->key + temp->right->key + temp->right->left->key;
+					if (sum == value) return true;
+				}
+			}
+			if (findtiga(temp->left, value) ||
+				findtiga(temp->right, value))
+				return true;
+			else
+				return false;			 
+		}
+		return false;
+	}
+```
+
 
 ### Visualisasi Solusi
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_visual1.png)
+INPUT:
+```
+10
+73 66 91 53 72 77 98 74 78 79
+266
+```
+OUTPUT:
+```
+Penjumlahan angka di tree yang menghasilkan 266 ditemukan
+```
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_ng.png)
 
 ## Penomoran Garasi Saha
 ### Verdict
