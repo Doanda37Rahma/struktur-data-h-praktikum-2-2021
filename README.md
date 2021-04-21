@@ -5,7 +5,7 @@
 Wrong Answer
 
 ### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_banyu.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_banyu.png)
 
 ### Penjelasan Soal
 
@@ -13,14 +13,14 @@ Wrong Answer
 
 
 ### Visualisasi Solusi
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/gg_visual1.png)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/gg_visual1.png)
 
 ## Roni Suka Merah
 ### Verdict
 AC saat Praktikum 
 (Karena kesalahan testcase, waktu ac saat revisi)
 ### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_roni_suka_merah.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_roni_suka_merah.png)
 
 ### Penjelasan Soal
 Diminta memasukkan input ke dalam tree dan mengeluarkan output sesuai petunjuk: "Roni" dan "Merah"
@@ -61,14 +61,14 @@ int main() {
 ```
 
 ### Visualisasi Solusi
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/Inorder-traversal.gif)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/Inorder-traversal.gif)
 
 ## Genjil Ganap V2
 ### Verdict
 AC saat Praktikum
 
 ### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_ganjil_genap_v2.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_ganjil_genap_v2.png)
 ### Penjelasan Soal
 Diminta membuat binary search tree yang isinya angka genap semua. Jika ada input ganjil, angka genap terakhir dihapus dari tree. Diminta mengeluarkan output terkecil hingga terbesar.
 ### Penjelasan Solusi
@@ -120,14 +120,14 @@ Output:
 ```
 6 10 12 
 ```
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_genap_ganjil_v2.png)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_genap_ganjil_v2.png)
 
 ## MALUR TERHUBUNG
 ### Verdict
 AC saat Praktikum
 
 ### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_malur_terhubung.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_malur_terhubung.png)
 
 ### Penjelasan Soal
 Diberikan input angka dalam tree. Untuk setiap query l dan r, outputkan hasil penjumlahan subtree yang menghubungkan l dan r (l<r). Jika l/r tidak dalam tree, outputkan `-1`.
@@ -200,14 +200,14 @@ void scs_recur(node *t, int* sum) {
 Fungsi ini mencari subtree yang menghubungkan l dan r (subtree pertama yang bernilai inklusif antara l dan r, subtree ini pasti root teratas yang dilalui saat menghubungkan l dan r, karena ) dengan fungsi `scs`. Mulai dari root, jika value > r, ke kiri, jika value < l, ke kanan. Setelah ketemu subtree yang dicari, maka menghitung jumlah setiap anggota dalam subtree dengan fungsi `scs_recur` yang menggunakan traversing preorder.
 
 ### Visualisasi Solusi
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_malur.png)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_malur.png)
 
 ## Nadut Gabut
 ### Verdict
 AC saat Praktikum
 
 ### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_nadut_gabut.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_nadut_gabut.png)
 
 ### Penjelasan Soal
 Diberikan suatu tree, program diminta menentukan apakah ada penjumlahan tiga node terhubung yang menghasilkan jumlah tertentu `sum` dalam tree.
@@ -242,7 +242,7 @@ Program menggunakan fungsi bool `findJumlahTiga()`. Fungsi ini menjumlahkan tiap
 	}
 ```
 Terdapat 5 kemungkinan hubungan 3 node dalam tree.
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_ng.png)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_ng.png)
 Tiap kemungkinan ini dicek dalam fungsi rekursif `findtiga()`:
 ```
 	bool findtiga(node *temp, int value) {
@@ -292,14 +292,14 @@ OUTPUT:
 ```
 Penjumlahan angka di tree yang menghasilkan 266 ditemukan
 ```
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_ng2.png)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_ng2.png)
 
 ## Penomoran Garasi Saha
 ### Verdict
 AC saat Praktikum
 
 ### Bukti
-![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/bukti_penomoran_garasi_saha.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_penomoran_garasi_saha.png)
 
 ### Penjelasan Soal
 Diberikan sebuah tree. Program diminta mendata node tree pada tingkat terbawah sampai tingkat teratas dengan pola nilai minimal, maksimal, minimal, dst.
@@ -428,7 +428,7 @@ OUTPUT
 ```
 Disini jumlah tingkat tree adalah 3(ganjil), maka pola dari atas adalah min-max-min
 
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-1-2021/blob/main/img/visual_pgs.png)
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_pgs.png)
 
 
 
