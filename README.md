@@ -8,12 +8,38 @@ Wrong Answer
 ![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_banyu.png)
 
 ### Penjelasan Soal
+Diberikan sebuah non-binary tree yang tiap cabang node memiliki jarak tertentu untuk melewatinya. Untuk setiap query, program diminta mencari _leaf_ terdekat dari node tertentu.
 
-### Penjelasan Solusi
+### Penjelasan & Visualisasi Solusi
+Data yang digunakan berbentuk _undirected weighted graph_ yang berbentuk _tree_, dimana node adalah _vertex_ dan jarak antar node adalah _edge_. Data graph ini disimpan dalam bentuk _adjacency list_ (array), dimana setiap vertex (mulai dari 0) memiliki list yang berisi vertex tetangga dan edge (jarak).
+Leaf dalam tree ini adalah vertex yang mempunyai tetangga hanya 1.
+Contoh I/O:
+```
+7 6
+0 1 5
+0 3 1
+1 2 8
+1 4 1
+3 6 1
+4 5 10
+3
+0
+4
+5
+```
+```
+6
+6
+5
+```
+Tree:
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_banyu_tree.png)
 
+Adjacency list:
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_banyu_adj.png)
+**Hipotesis Solusi**
+Untuk setiap query `q`, program pertama mengakses list milik `q`, kemudian program menggunakan fungsi (rekursif) untuk mengunjungi setiap tetangga, sambil menghitung sum sampai ke vertex leaf, kemudian mengambil sum terkecil (dan leaf yang dikunjungi). Setelah selesai, program mengoutputkan leaf tersebut. 
 
-### Visualisasi Solusi
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/gg_visual1.png)
 
 ## Roni Suka Merah
 ### Verdict
@@ -69,6 +95,7 @@ AC saat Praktikum
 
 ### Bukti
 ![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_ganjil_genap_v2.png)
+
 ### Penjelasan Soal
 Diminta membuat binary search tree yang isinya angka genap semua. Jika ada input ganjil, angka genap terakhir dihapus dari tree. Diminta mengeluarkan output terkecil hingga terbesar.
 ### Penjelasan Solusi
@@ -254,6 +281,7 @@ Program menggunakan fungsi bool `findJumlahTiga()`. Fungsi ini menjumlahkan tiap
 ```
 Terdapat 5 kemungkinan hubungan 3 node dalam tree.
 ![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_ng.png)
+
 Tiap kemungkinan ini dicek dalam fungsi rekursif `findtiga()`:
 ```
 	bool findtiga(node *temp, int value) {
