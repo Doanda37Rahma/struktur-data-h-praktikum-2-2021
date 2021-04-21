@@ -33,10 +33,13 @@ Contoh I/O:
 5
 ```
 Tree:
+
 ![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_banyu_tree.png)
 
 Adjacency list:
+
 ![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_banyu_adj.png)
+
 **Hipotesis Solusi**
 Untuk setiap query `q`, program pertama mengakses list milik `q`, kemudian program menggunakan fungsi (rekursif) untuk mengunjungi setiap tetangga, sambil menghitung sum sampai ke vertex leaf, kemudian mengambil sum terkecil (dan leaf yang dikunjungi). Setelah selesai, program mengoutputkan leaf tersebut. 
 
