@@ -191,13 +191,15 @@ int main() {
 	return 0;
 }
 ```
-Pertama, program mengambil input `N`, banyak angka dalam tree, dan `Q`, banyak query. Kemudian program mengambil `N` angka dan memasukkan ke tree.
-Kemudian untuk setiap query:
+Untuk setiap query program:
+
 Mengambil l dan r
+
 Menukar l dan r jika l>r
-Jika l dan r ada dalam tree:
-  Menjalankan fungsi sumConnectingSubtree().
-  jika tidak keluarkan -1.
+
+Jika l dan r ada dalam tree: menjalankan fungsi sumConnectingSubtree().
+
+Jika tidak keluarkan -1.
  
 #### Fungsi sumConnectingSubtree()
 ```
