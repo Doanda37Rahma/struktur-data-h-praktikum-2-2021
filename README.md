@@ -229,7 +229,7 @@ void scs_recur(node *t, int* sum) {
 		}
 	}
 ```
-Fungsi ini mencari subtree yang menghubungkan l dan r (subtree pertama yang bernilai inklusif antara l dan r, subtree ini pasti root teratas yang dilalui saat menghubungkan l dan r, karena ) dengan fungsi `scs`. Mulai dari root, jika value > r, ke kiri, jika value < l, ke kanan. Setelah ketemu subtree yang dicari, maka menghitung jumlah setiap anggota dalam subtree dengan fungsi `scs_recur` yang menggunakan traversing preorder.
+Fungsi ini mencari subtree yang menghubungkan l dan r (subtree pertama yang bernilai inklusif antara l dan r, subtree ini pasti root teratas yang dilalui saat menghubungkan l dan r, karena sifat BST) dengan fungsi `scs`. Mulai dari root, jika value > r, ke kiri, jika value < l, ke kanan. Setelah ketemu subtree yang dicari, maka menghitung jumlah setiap anggota dalam subtree dengan fungsi `scs_recur` yang menggunakan traversing preorder.
 
 ### Visualisasi Solusi
 INPUT:
