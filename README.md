@@ -11,7 +11,7 @@ Wrong Answer
 Diberikan sebuah non-binary tree yang tiap cabang node memiliki jarak tertentu untuk melewatinya. Untuk setiap query, program diminta mencari _leaf_ terdekat dari node tertentu.
 
 ### Penjelasan & Visualisasi Solusi
-Data yang digunakan berbentuk _undirected weighted graph_ yang berbentuk _tree_, dimana node adalah _vertex_ dan jarak antar node adalah _edge_. Data graph ini disimpan dalam bentuk _adjacency list_ (array), dimana setiap vertex (mulai dari 0) memiliki list yang berisi vertex tetangga dan edge (jarak).
+Data yang digunakan berbentuk _undirected weighted graph_ yang berbentuk _tree_, dimana node adalah _vertex_ dan jarak antar node adalah _weight_. Data graph ini disimpan dalam bentuk _adjacency list_ (array), dimana setiap vertex (mulai dari 0) memiliki list yang berisi vertex tetangga dan weight (jarak).
 Leaf dalam tree ini adalah vertex yang mempunyai tetangga hanya 1.
 Contoh I/O:
 ```
