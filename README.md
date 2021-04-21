@@ -200,6 +200,17 @@ void scs_recur(node *t, int* sum) {
 Fungsi ini mencari subtree yang menghubungkan l dan r (subtree pertama yang bernilai inklusif antara l dan r, subtree ini pasti root teratas yang dilalui saat menghubungkan l dan r, karena ) dengan fungsi `scs`. Mulai dari root, jika value > r, ke kiri, jika value < l, ke kanan. Setelah ketemu subtree yang dicari, maka menghitung jumlah setiap anggota dalam subtree dengan fungsi `scs_recur` yang menggunakan traversing preorder.
 
 ### Visualisasi Solusi
+INPUT:
+```
+8 1
+8 3 10 1 6 14 4 7 
+3 7 
+```
+OUTPUT:
+```
+21
+```
+
 ![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_malur.png)
 
 ## Nadut Gabut
