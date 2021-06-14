@@ -2,17 +2,91 @@
 
 ## Banyu
 ### Verdict
-Wrong Answer
-
+AC Perbaikan
 ### Bukti
 ![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_banyu.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_banyu1.png)
+![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_banyu2.png)
 
 ### Penjelasan Soal
 Diberikan sebuah non-binary tree yang tiap cabang node memiliki jarak tertentu untuk melewatinya. Untuk setiap query, program diminta mencari _leaf_ terdekat dari node tertentu.
 
 ### Penjelasan & Visualisasi Solusi
-Data yang digunakan berbentuk _undirected weighted graph_ yang berbentuk _tree_, dimana node adalah _vertex_ dan jarak antar node adalah _weight_. Data graph ini disimpan dalam bentuk _adjacency list_ (array), dimana setiap vertex (mulai dari 0) memiliki list yang berisi vertex tetangga dan weight (jarak).
-Leaf dalam tree ini adalah vertex yang mempunyai tetangga hanya 1.
+Data yang digunakan berbentuk _undirected weighted graph_ yang berbentuk _tree_, dimana node adalah _vertex_ dan jarak antar node adalah _weight_. Data graph ini disimpan dalam bentuk _adjacency matrix_ (array 2d)
+Leaf dalam tree ini adalah vertex yang mempunyai tetangga hanya 1, dan bukan node 0.
+
+Untuk setiap query `q`, program pertama mengakses list milik `q`, kemudian program menggunakan fungsi (rekursif) untuk mengunjungi setiap tetangga, sambil menghitung sum sampai ke vertex leaf, kemudian mengambil sum terkecil (dan leaf yang dikunjungi). Setelah selesai, program mengoutputkan leaf tersebut. 
+Program menggunakan DFS untuk menghitung jarak, dan mengupdate jarak minimum & daun terdekat saat mencapai leaf.
+
+#### Fungsi `main()`
+```
+int main() {
+
+    int V, E;
+    cin >> V >> E;         // input jml vertex & edge
+    Graph tree(V, E);      // konstruksi tree (graph)
+
+    int u, v, w;
+    for(int i = 0; i < E; ++i) {   // input edge
+        cin >> u >> v >> w;
+        tree.addEdge(u, v, w);    
+    } 
+
+    int Q, q;
+    cin >> Q;
+    for (int i = 0; i < Q; i++) {  // query
+        cin >> q;
+        cout << tree.findMinLeaf(q) << endl;
+    }
+
+    return 0;
+}
+```
+#### Fungsi `findMinLeaf()`
+```
+int findMinLeaf(int u) {
+
+    minLeafDist = INF;  
+
+    int neighborCount = 0;                      // hitung jumlah neighbor 
+    for (int i = 0; i < V; ++i)                 
+        if (mat[u][i] != 0) neighborCount++;     
+
+    if (neighborCount == 1 && u != 0) return u; // jika bukan node 0 &
+                                                // leaf node, kembalikan node
+    for (int i = 0; i < V; ++i) 
+        visited[i] = false;     // belum ada yang visited
+
+    int dist = 0;           // jarak menuju node leaf
+    DFS(u, visited, dist); 
+
+    return minLeaf;
+}
+```
+
+#### Fungsi `DFS()`
+```
+void DFS(int u, bool visited[], int dist) {
+    
+    bool over = true;   // true jika sampai node leaf
+    visited[u] = true;  // node ditandai visited
+
+    for (int v = 0; v < V; ++v) {   // untuk setiap neighbor
+        if (mat[u][v] != 0 && !visited[v]) {   
+            DFS(v, visited, dist + mat[u][v]); // dist di tambahkan weight
+            over = false;                      // DFS berlanjut/belum leaf
+        }
+    } 
+
+    if (over && u != 0) {       
+        if (minLeafDist > dist) {   // update jarak terpendek & leaf terdekat
+            minLeafDist = dist;     
+            minLeaf = u;
+        } else if (minLeafDist == dist) {  // jika jarak sama
+            minLeaf = min(minLeaf, u);     // pilih leaf # terkecil
+        }
+    }
+```
 Contoh I/O:
 ```
 7 6
@@ -36,12 +110,9 @@ Tree:
 
 ![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_banyu_tree.png)
 
-Adjacency list:
+Adjacency Matrix:
 
-![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_banyu_adj.png)
-
-**Hipotesis Solusi**
-Untuk setiap query `q`, program pertama mengakses list milik `q`, kemudian program menggunakan fungsi (rekursif) untuk mengunjungi setiap tetangga, sambil menghitung sum sampai ke vertex leaf, kemudian mengambil sum terkecil (dan leaf yang dikunjungi). Setelah selesai, program mengoutputkan leaf tersebut. 
+![VISUAL](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/visual_banyu_adjmatrix.png)
 
 
 ## Roni Suka Merah
