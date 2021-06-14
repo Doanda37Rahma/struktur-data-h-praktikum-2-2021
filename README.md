@@ -12,11 +12,12 @@ AC Perbaikan
 Diberikan sebuah non-binary tree yang tiap cabang node memiliki jarak tertentu untuk melewatinya. Untuk setiap query, program diminta mencari _leaf_ terdekat dari node tertentu.
 
 ### Penjelasan & Visualisasi Solusi
-Data yang digunakan berbentuk _undirected weighted graph_ yang berbentuk _tree_, dimana node adalah _vertex_ dan jarak antar node adalah _weight_. Data graph ini disimpan dalam bentuk _adjacency matrix_ (array 2d)
+Data yang digunakan berbentuk _undirected weighted graph_ yang berbentuk _tree_, dimana node adalah _vertex_ dan jarak antar node adalah _weight_. Data graph ini disimpan dalam bentuk _adjacency matrix_ (array 2d).
+
 Leaf dalam tree ini adalah vertex yang mempunyai tetangga hanya 1, dan bukan node 0.
 
-Untuk setiap query `q`, program pertama mengakses list milik `q`, kemudian program menggunakan fungsi (rekursif) untuk mengunjungi setiap tetangga, sambil menghitung sum sampai ke vertex leaf, kemudian mengambil sum terkecil (dan leaf yang dikunjungi). Setelah selesai, program mengoutputkan leaf tersebut. 
-Program menggunakan DFS untuk menghitung jarak, dan mengupdate jarak minimum & daun terdekat saat mencapai leaf.
+Untuk setiap query `q`, program menggunakan DFS untuk menghitung jarak, dan mengupdate jarak minimum & daun terdekat saat mencapai leaf. Kemudian mengoutputkan leaf terdekat.
+
 
 #### Fungsi `main()`
 ```
