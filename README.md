@@ -9,7 +9,7 @@ AC Perbaikan
 ![BUKTI](https://github.com/Doanda37Rahma/struktur-data-h-praktikum-2-2021/blob/main/img/bukti_banyu2.png)
 
 ### Penjelasan Soal
-Diberikan sebuah non-binary tree yang tiap cabang node memiliki jarak tertentu untuk melewatinya. Untuk setiap query, program diminta mencari _leaf_ terdekat dari node tertentu.
+Diberikan sebuah tree yang tiap cabang node memiliki jarak tertentu untuk melewatinya. Untuk setiap query, program diminta mencari _leaf_ terdekat dari node tertentu.
 
 ### Penjelasan & Visualisasi Solusi
 Data yang digunakan berbentuk _undirected weighted graph_ yang berbentuk _tree_, dimana node adalah _vertex_ dan jarak antar node adalah _weight_. Data graph ini disimpan dalam bentuk _adjacency matrix_ (array 2d).
@@ -54,7 +54,7 @@ int findMinLeaf(int u) {
         if (mat[u][i] != 0) neighborCount++;     
 
     if (neighborCount == 1 && u != 0) return u; // jika bukan node 0 &
-                                                // leaf node, kembalikan node
+                                                // merupakan leaf node, kembalikan node
     for (int i = 0; i < V; ++i) 
         visited[i] = false;     // belum ada yang visited
 
